@@ -20,9 +20,15 @@ namespace TodoApplication2.Controllers
         }
 
         // GET: Todos1
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Todo.ToListAsync());
+            var todos = from t in _context.Todo
+                        select t;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                todos = todos.Where(t => t.Title.Contains(searchString));
+            }
+            return View(await todos.ToListAsync());
         }
 
         // GET: Todos1/Details/5
