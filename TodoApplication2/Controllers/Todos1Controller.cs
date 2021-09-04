@@ -20,15 +20,30 @@ namespace TodoApplication2.Controllers
         }
 
         // GET: Todos1
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string todoType, string searchString)
         {
+            // Use LINQ to get list of genres
+            IQueryable<string> typeQuery = from t in _context.Todo
+                                           orderby t.Type
+                                           select t.Type;
+
             var todos = from t in _context.Todo
                         select t;
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 todos = todos.Where(t => t.Title.Contains(searchString));
             }
-            return View(await todos.ToListAsync());
+            if (!string.IsNullOrEmpty(todoType))
+            {
+                todos = todos.Where(t => t.Type == todoType);
+            }
+            var todoTypeVM = new TodoTypeViewModel
+            {
+                Types = new SelectList(await typeQuery.Distinct().ToListAsync()),
+                Todos = await todos.ToListAsync()
+            };
+            return View(todoTypeVM);
         }
 
         // GET: Todos1/Details/5
