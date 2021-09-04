@@ -20,6 +20,8 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
+            </th>            <th>
+                @Html.DisplayNameFor(model => model.Type)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DoneByDate)
@@ -35,6 +37,8 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>            <td>
+                @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DoneByDate)
