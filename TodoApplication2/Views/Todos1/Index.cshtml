@@ -33,7 +33,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Todos[0].IsCompleted)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Todos[0].Difficulty)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -50,6 +52,8 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsCompleted)
+            </td>            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
