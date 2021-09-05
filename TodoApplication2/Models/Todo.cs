@@ -19,5 +19,6 @@ namespace TodoApplication2.Models
         public DateTime DoneByDate { get; set; }
         [Display(Name = "Is Completed")]
         public bool IsCompleted { get; set; }
+        public string Difficulty { get; set; }
     }
 }
