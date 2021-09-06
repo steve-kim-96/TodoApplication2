@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TodoApplication2.Models
 {
-    public class TodoTypeViewModel
+    public class TodoViewModel
     {
         public List<Todo> Todos { get; set; }
         public SelectList Types { get; set; }
