@@ -38,7 +38,7 @@ namespace TodoApplication2.Controllers
             {
                 todos = todos.Where(t => t.Type == todoType);
             }
-            var todoTypeVM = new TodoTypeViewModel
+            var todoTypeVM = new TodoViewModel
             {
                 Types = new SelectList(await typeQuery.Distinct().ToListAsync()),
                 Todos = await todos.ToListAsync()
